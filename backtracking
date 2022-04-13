@@ -1,0 +1,78 @@
+#backtracking
+"""
+def subsequence(ind,n,ds,arr):
+    if ind==n:
+        print(ds)
+        return 
+    #logic to make a pick
+    ds.append(arr[ind])
+    subsequence(ind+1,n,ds,arr)
+    ds.pop()
+    #logic to not to make a pick
+    subsequence(ind+1,n,ds,arr)
+n=int(input())
+arr=list(map(int,input().split()))
+ds=[]
+subsequence(0,n,ds,arr)
+"""
+#backtracking with given target to print whether the given target is equal to sum of subarrays or not
+"""
+def subsequence(ind,s,n,t,arr):
+    if ind==n:
+        if s==t:
+            return True
+        else:
+            return False
+    s+=arr[ind]
+    if subsequence(ind+1,s,n,t,arr):
+        return True
+    s-=arr[ind]
+    if subsequence(ind+1,s,n,t,arr):
+        return True
+    return False
+n=int(input())
+arr=list(map(int,input().split()))
+t=int(input())
+print(subsequence(0,0,n,t,arr))
+"""
+#print how many subarrays are there whose sum is equal to target
+
+def subsequence(i,s,n,t,arr):
+    if i==n:
+        if s==t:
+            return 1
+        return 0
+    s+=arr[i]
+    left=subsequence(i+1,s,n,t,arr)
+    s-=arr[i]
+    right=subsequence(i+1,s,n,t,arr)
+    return left+right
+n=int(input())
+t=int(input())
+arr=list(map(int,input().split()))
+print(subsequence(0,0,n,t,arr))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
